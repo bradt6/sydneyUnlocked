@@ -4,9 +4,8 @@ import classes from './Card.module.css';
 const card = (props) => {
     return (
         <div className={classes.Card}>
-
             <div className={classes.topRow}>
-            
+            <p>{props.id}</p>
             </div>
 
             <div className={classes.middleRow}>

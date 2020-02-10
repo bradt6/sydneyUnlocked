@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import classes from './App.module.css';
-import Card from './Ui/Card'
 
 import Layout from './components/Layout/Layout';
 import EventLoader from './containers/EventLoadout';

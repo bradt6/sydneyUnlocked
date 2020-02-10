@@ -1,0 +1,14 @@
+.EventLayoutContainer {
+    width: 100%;
+    margin: auto;
+    height: 100%;
+    overflow: scroll;
+    display: flex;
+    flex-flow: column;
+}
+
+@media(min-width: 500px) {
+    .EventLayoutContainer {
+        width: 425px;
+    }
+}
