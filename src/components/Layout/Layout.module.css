@@ -1,0 +1,14 @@
+.Container {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    height: 100%;
+}
+
+.Wrapper {
+    flex: 1;
+    max-width: 425px;
+    width: 100%;
+    background-color: aqua;
+}

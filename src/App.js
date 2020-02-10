@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import './App.css';
+import classes from './App.module.css';
 import Card from './Ui/Card'
+
+import Layout from './components/Layout/Layout';
+import EventLoader from './containers/EventLoadout';
 
 
 function App() {
@@ -9,9 +12,12 @@ function App() {
   });
 
   return (
-      <div className="App">
+      <Layout>
+      <div className={classes.App}>
         <h1> hi this is my ract project </h1>
       </div>
+      <EventLoader></EventLoader>
+    </Layout>
   );
 }
 

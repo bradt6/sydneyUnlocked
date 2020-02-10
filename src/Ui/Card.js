@@ -1,10 +1,22 @@
 import React from 'react';
-
-import './Card.css';
+import classes from './Card.module.css';
 
 const card = (props) => {
     return (
-        <div className="Card">
+        <div className={classes.Card}>
+
+            <div className={classes.topRow}>
+            
+            </div>
+
+            <div className={classes.middleRow}>
+
+            </div>
+
+            <div className={classes.bottomRow}>
+
+                
+            </div>
 
         </div>
     )
