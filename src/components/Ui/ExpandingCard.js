@@ -15,10 +15,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CSSClasses from './ExpandingCard.module.css';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
+        margin: 10
     },
     media: {
         height: 0,
@@ -34,15 +37,12 @@ const useStyles = makeStyles(theme => ({
     expandOpen: {
         transform: 'rotate(180deg)',
     },
-    textContainer: {
-        flexDirection: "row"
-    },
     avatar: {
         backgroundColor: red[500],
     },
 }));
 
-export default function RecipeReviewCard() {
+const ExpandingCard = (props) => {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -60,15 +60,18 @@ export default function RecipeReviewCard() {
             <CardContent>
                 <Typography variant="h4" color="textPrimary" component="p">
                     Australia Day party
-        </Typography>
-                <div className={classes.textContainer}>
-                    <Typography variant="subtitle1" color="textPrimary" component="p" align="left">
+                </Typography>
+
+                <div className={CSSClasses.PlaceAndTimeContainer}>
+                    <Typography variant="subtitle1" color="textPrimary" component="p">
                         Ivy
-        </Typography>
-                    <Typography variant="subtitle1" color="textPrimary" component="p" align="right">
-                        1
-        </Typography>
+                    </Typography>
+
+                    <Typography variant="subtitle1" color="textPrimary" component="p">
+                        9PM - 3AM
+                    </Typography>
                 </div>
+
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
@@ -94,7 +97,7 @@ export default function RecipeReviewCard() {
                     <Typography paragraph>
                         Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
                         minutes.
-          </Typography>
+                    </Typography>
                     <Typography paragraph>
                         Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
                         heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
@@ -102,9 +105,14 @@ export default function RecipeReviewCard() {
                         and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
                         pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
                         saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-          </Typography>
+                     </Typography>
+                    <div className={CSSClasses.buttonContainer}>
+                        <Button variant="contained" color="primary" >Purchase Ticket</Button>
+                    </div>
                 </CardContent>
             </Collapse>
         </Card>
     );
 }
+
+export default ExpandingCard;

@@ -6,6 +6,7 @@
     display: flex;
     flex-flow: column;
     background-color: blueviolet;
+    align-items: center;
 }
 
 @media(min-width: 500px) {

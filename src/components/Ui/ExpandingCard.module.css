@@ -1,0 +1,14 @@
+.PlaceAndTimeContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: no-wrap;
+    justify-content: space-between;
+    padding: 6px;
+}
+
+ .buttonContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
