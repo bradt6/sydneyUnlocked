@@ -5,6 +5,7 @@
     overflow: scroll;
     display: flex;
     flex-flow: column;
+    background-color: blueviolet;
 }
 
 @media(min-width: 500px) {

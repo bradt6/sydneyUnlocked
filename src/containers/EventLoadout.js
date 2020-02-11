@@ -28,7 +28,8 @@ class EventLoadout extends Component {
             startTime: '2000',
             endTime: '0100',
             ticketLink: 'www.Zepher.com'
-        }]
+        },
+    ];
 
     render() {
         return (
