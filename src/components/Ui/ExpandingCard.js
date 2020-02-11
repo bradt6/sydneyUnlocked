@@ -18,10 +18,35 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CSSClasses from './ExpandingCard.module.css';
 import Button from '@material-ui/core/Button';
 
+// Example data being passed in via props 
+
+// current_event = [
+//     {
+//         id: 'YUIDYSAJHJDK21343124',
+//         venueName: 'Australia party',
+//         eventName: 'Ivy',
+//         date: '10/02.20',
+//         startTime: '2000',
+//         endTime: '0100',
+//         ticketLink: 'www.example.com'
+//     },
+//     {
+//         id: 'HKFHDSJKFHJKSDHFJ',
+//         venueName: 'WOOOOOO',
+//         eventName: 'Zepher',
+//         date: '10/02.20',
+//         startTime: '2000',
+//         endTime: '0100',
+//         ticketLink: 'www.Zepher.com'
+//     },
+// ];
+
+
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
-        margin: 10
+        margin: 10,
+        width:325
     },
     media: {
         height: 0,
@@ -59,16 +84,16 @@ const ExpandingCard = (props) => {
             />
             <CardContent>
                 <Typography variant="h4" color="textPrimary" component="p">
-                    Australia Day party
+                    {props.eventName}
                 </Typography>
 
                 <div className={CSSClasses.PlaceAndTimeContainer}>
                     <Typography variant="subtitle1" color="textPrimary" component="p">
-                        Ivy
+                        {props.venueName}
                     </Typography>
 
                     <Typography variant="subtitle1" color="textPrimary" component="p">
-                        9PM - 3AM
+                        {props.startTime + ' - ' + props.endTime}
                     </Typography>
                 </div>
 
@@ -107,6 +132,7 @@ const ExpandingCard = (props) => {
                         saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
                      </Typography>
                     <div className={CSSClasses.buttonContainer}>
+                        {/* TODO: PASS THE ticketLink */}
                         <Button variant="contained" color="primary" >Purchase Ticket</Button>
                     </div>
                 </CardContent>

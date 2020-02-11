@@ -10,8 +10,15 @@ const EventLayout = (props) => {
         <div className={classes.EventLayoutContainer}>
             {/* {transformedEvents} */}
             {props.passedEvent.map(item => (
-                //<Card key={item.id} ID={item.id} ></Card>
-                <ExpandingCard key={item.id} ID={item.id} ></ExpandingCard>
+                <ExpandingCard key={item.id}
+                ID={item.id}
+                venueName={item.venueName} 
+                eventName={item.eventName} 
+                startTime={item.startTime}
+                endTime={item.endTime}
+                date={item.date}
+                ticketLink={item.ticketLink}
+                ></ExpandingCard>
             ))}
         </div>
     )
