@@ -78,25 +78,25 @@ const ScrollableTabsButtonAuto = (props) => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                Item One
+                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={1}>
                 <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={2}>
-                Item Three
+                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={3}>
-                Item Four
+                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={4}>
-                Item Five
+                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={5}>
-                Item Six
+                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={6}>
-                Item Seven
+                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
       </TabPanel>
         </div>
     );

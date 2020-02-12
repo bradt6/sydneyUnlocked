@@ -79,8 +79,8 @@ const ExpandingCard = (props) => {
         <Card className={classes.root}>
             <CardMedia
                 className={classes.media}
-                image="/static/images/cards/paella.jpg"
-                title="Paella dish"
+                image={require("../../assets/images/webReactTest.jpg")}
+                title="Event Test"
             />
             <CardContent>
                 <Typography variant="h4" color="textPrimary" component="p">

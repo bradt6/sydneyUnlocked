@@ -49,9 +49,9 @@ class EventLoadout extends Component {
                 <ScrollableTabs passedEvent={this.current_event}>    
                 </ScrollableTabs>
 
-                <TimeContainer passedEvent={this.current_event}>
-                {/* <EventContainer passedEvent={this.current_event}> </EventContainer> */}
-                </TimeContainer>
+                {/* <TimeContainer passedEvent={this.current_event}>
+                <EventContainer passedEvent={this.current_event}> </EventContainer>
+                </TimeContainer> */}
             </Aux>   
         );
     }

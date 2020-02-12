@@ -13,7 +13,6 @@ function App() {
   return (
       <Layout>
       <div className={classes.App}>
-        <h1> hi this is my ract project </h1>
       </div>
       <EventLoader></EventLoader>
     </Layout>
