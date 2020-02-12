@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import Aux from '../hoc/Aux'
-import EventContainer from '../components/Event/EventLayout'
+import EventContainer from '../components/Event/EventLayout';
+import TimeContainer from '../components/Event/timeContainer';
+import ScrollableTabs from '../components/dateNavigation/DateNav';
 
 import dayjs, {Dayjs} from 'dayjs';
 
@@ -44,8 +46,12 @@ class EventLoadout extends Component {
     render() {
         return (
             <Aux>
-                <div>Dates</div>
-                <EventContainer passedEvent={this.current_event}> </EventContainer>
+                <ScrollableTabs value={this.current_event}>    
+                </ScrollableTabs>
+
+                <TimeContainer passedEvent={this.current_event}>
+                {/* <EventContainer passedEvent={this.current_event}> </EventContainer> */}
+                </TimeContainer>
             </Aux>   
         );
     }

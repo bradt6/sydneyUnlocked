@@ -3,13 +3,15 @@ import classes from './EventLayout.module.css';
 import Card from '../Ui/Card';
 import ExpandingCard from '../Ui/ExpandingCard';
 
+import Aux from '../../hoc/Aux';
+
 
 // pass the cards into here 
 const EventLayout = (props) => {
     return (
-        <div className={classes.EventLayoutContainer}>
+        <Aux>
             {/* {transformedEvents} */}
-            {props.passedEvent.map(item => (
+            {/* {props.passedEvent.map(item => (
                 <ExpandingCard key={item.id}
                 ID={item.id}
                 venueName={item.venueName} 
@@ -19,8 +21,17 @@ const EventLayout = (props) => {
                 date={item.date}
                 ticketLink={item.ticketLink}
                 ></ExpandingCard>
-            ))}
-        </div>
+            ))} */}
+            <ExpandingCard key={props.id}
+                ID={props.id}
+                venueName={props.venueName}
+                eventName={props.eventName}
+                startTime={props.startTime}
+                endTime={props.endTime}
+                date={props.date}
+                ticketLink={props.ticketLink}>
+            </ExpandingCard>
+        </Aux>
     )
 }
 

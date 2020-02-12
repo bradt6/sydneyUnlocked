@@ -7,6 +7,8 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+import TimeContainer from '../Event/timeContainer';
+
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -45,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function ScrollableTabsButtonAuto(props) {
+const ScrollableTabsButtonAuto = (props) => {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -78,7 +80,7 @@ export default function ScrollableTabsButtonAuto(props) {
                 Item One
       </TabPanel>
             <TabPanel value={value} index={1}>
-                Item Two
+                <TimeContainer passedEvent={value.current_event}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={2}>
                 Item Three
@@ -98,3 +100,5 @@ export default function ScrollableTabsButtonAuto(props) {
         </div>
     );
 }
+
+export default ScrollableTabsButtonAuto;
