@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 import TimeContainer from '../Event/timeContainer';
+import CSSclasses from '../Event/EventLayout.module.css';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -56,7 +57,7 @@ const ScrollableTabsButtonAuto = (props) => {
     };
 
     return (
-        <div className={classes.root}>
+        <div className = { CSSclasses.EventLayoutContainer } >
             <AppBar position="static" color="default">
                 <Tabs
                     value={value}
@@ -80,7 +81,7 @@ const ScrollableTabsButtonAuto = (props) => {
                 Item One
       </TabPanel>
             <TabPanel value={value} index={1}>
-                <TimeContainer passedEvent={value.current_event}></TimeContainer>
+                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={2}>
                 Item Three

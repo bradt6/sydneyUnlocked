@@ -46,7 +46,7 @@ class EventLoadout extends Component {
     render() {
         return (
             <Aux>
-                <ScrollableTabs value={this.current_event}>    
+                <ScrollableTabs passedEvent={this.current_event}>    
                 </ScrollableTabs>
 
                 <TimeContainer passedEvent={this.current_event}>
