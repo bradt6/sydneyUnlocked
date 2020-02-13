@@ -13,7 +13,16 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
-import SlidingMenu from './BurgerSliderMenu';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -27,6 +36,7 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
+        
     },
     search: {
         position: 'relative',
@@ -75,9 +85,15 @@ const useStyles = makeStyles(theme => ({
             display: 'none',
         },
     },
+    list: {
+    width: 250,
+    },
+    fullList: {
+        width: 'auto',
+    },
 }));
 
-const PrimarySearchAppBar = (props) => {
+const PrimarySearchAppBar = () => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -113,6 +129,60 @@ const PrimarySearchAppBar = (props) => {
 
         setState({ ...state, [side]: open });
     };
+
+    const sideList = side => (
+        <div
+            className={classes.list}
+            role="presentation"
+            onClick={toggleDrawer(side, false)}
+            onKeyDown={toggleDrawer(side, false)}
+        >
+            <List>
+                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
+                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+        </div>
+    );
+
+    const fullList = side => (
+        <div
+            className={classes.fullList}
+            role="presentation"
+            onClick={toggleDrawer(side, false)}
+            onKeyDown={toggleDrawer(side, false)}
+        >
+            <List>
+                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
+                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+        </div>
+    );
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
@@ -176,8 +246,13 @@ const PrimarySearchAppBar = (props) => {
                        
                     >
                         <MenuIcon />
-                        <SlidingMenu open={state.left} onClose={toggleDrawer('left', false)} />
                     </IconButton>
+                    <div >
+                        <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
+                            {sideList('left')}
+                        </Drawer>
+                    </div>
+                    
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="show 17 new notifications" color="inherit">
