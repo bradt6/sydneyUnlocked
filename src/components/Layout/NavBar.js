@@ -102,6 +102,18 @@ const PrimarySearchAppBar = (props) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
+    const [state, setState] = React.useState({
+        left: false,
+    });
+
+    const toggleDrawer = (side, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+
+        setState({ ...state, [side]: open });
+    };
+
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
         <Menu
@@ -160,9 +172,11 @@ const PrimarySearchAppBar = (props) => {
                         className={classes.menuButton}
                         color="inherit"
                         aria-label="open drawer"
+                        onClick={toggleDrawer('left', true)}
                        
                     >
                         <MenuIcon />
+                        <SlidingMenu open={state.left} onClose={toggleDrawer('left', false)} />
                     </IconButton>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
@@ -195,6 +209,7 @@ const PrimarySearchAppBar = (props) => {
                     </div>
                 </Toolbar>
             </AppBar>
+            
             {renderMobileMenu}
             {renderMenu}
         </div>

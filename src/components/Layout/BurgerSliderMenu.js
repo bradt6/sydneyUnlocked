@@ -21,24 +21,24 @@ const useStyles = makeStyles({
 
 const TemporaryDrawer = (props)  => {
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        left: false,
-    });
+    // const [state, setState] = React.useState({
+    //     left: false,
+    // });
 
-    const toggleDrawer = (side, open) => event => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
+    // const toggleDrawer = (side, open) => event => {
+    //     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    //         return;
+    //     }
 
-        setState({ ...state, [side]: open });
-    };
+    //     setState({ ...state, [side]: open });
+    // };
 
     const sideList = side => (
         <div
             className={classes.list}
             role="presentation"
-            onClick={toggleDrawer(side, false)}
-            onKeyDown={toggleDrawer(side, false)}
+            onClick={props.onClose}
+            onKeyDown={props.onClose}
         >
             <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -64,8 +64,8 @@ const TemporaryDrawer = (props)  => {
         <div
             className={classes.fullList}
             role="presentation"
-            onClick={toggleDrawer(side, false)}
-            onKeyDown={toggleDrawer(side, false)}
+            onClick={props.onClose}
+            onKeyDown={props.onClose}
         >
             <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -89,8 +89,7 @@ const TemporaryDrawer = (props)  => {
 
     return (
         <div >
-            <Button onClick={toggleDrawer('left', true)}>Open Left</Button>
-            <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
+            <Drawer open={props.open} onClose={props.onClose}>
                 {sideList('left')}
             </Drawer>
         </div>
