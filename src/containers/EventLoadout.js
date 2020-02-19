@@ -7,16 +7,16 @@ import ScrollableTabs from '../components/dateNavigation/DateNav';
 
 import dayjs, {Dayjs} from 'dayjs';
 
+// const current = dayjs();
+// var isoArr = []
+// const populateDays = () => {
+//     for (var i = 0; i < 7; i++) {
+//         const dayToAdd = current.add(i, 'day').format('YYYY-MM-DD');
+//         isoArr.push(dayToAdd);
+//     }
+// }
+
 class EventLoadout extends Component {
-
-    // const populateDays = () => {
-    //     const current = dayjs();
-    //     for (var i = 0; i < 7; i++) {
-    //         const dayToAdd = current.add(i, 'day');
-
-    //     }
-    // }
-
     // use this to maintain dictionary of visited values of days
     state = {
 
@@ -43,6 +43,14 @@ class EventLoadout extends Component {
         },
     ];
 
+    
+
+    // componentDidMount() {
+    //     populateDays()
+    //     console.log(isoArr);
+    //     console.log(typeof isoArr[0]);
+    //     console.log(dayjs(isoArr[0]).format('ddd-D'));
+    // }
     render() {
         return (
             <Aux>

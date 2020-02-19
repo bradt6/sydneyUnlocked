@@ -10,8 +10,22 @@ import Box from '@material-ui/core/Box';
 import TimeContainer from '../Event/timeContainer';
 import CSSclasses from '../Event/EventLayout.module.css';
 
+import dayjs, { Dayjs } from 'dayjs';
+
+const current = dayjs();
+var isoArr = []
+const populateDays = () => {
+    console.log("populateDaysCalled")
+    for (var i = 0; i < 7; i++) {
+        const dayToAdd = current.add(i, 'day').format('YYYY-MM-DD');
+        isoArr.push(dayToAdd);
+    }
+}
+populateDays();
+
+
 function TabPanel(props) {
-    const { children, value, index, ...other } = props;
+    const { children, value, index,  ...other } = props;
 
     return (
         <Typography
@@ -55,6 +69,7 @@ const ScrollableTabsButtonAuto = (props) => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    console.log(isoArr);
 
     return (
         <div className = { CSSclasses.EventLayoutContainer } >
@@ -68,13 +83,13 @@ const ScrollableTabsButtonAuto = (props) => {
                     scrollButtons="auto"
                     aria-label="scrollable auto tabs example"
                 >
-                    <Tab label="Item One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
-                    <Tab label="Item Four" {...a11yProps(3)} />
-                    <Tab label="Item Five" {...a11yProps(4)} />
-                    <Tab label="Item Six" {...a11yProps(5)} />
-                    <Tab label="Item Seven" {...a11yProps(6)} />
+                    <Tab label= {dayjs(isoArr[0]).format('ddd-D')} {...a11yProps(0)} />
+                    <Tab label={dayjs(isoArr[1]).format('ddd-D')} {...a11yProps(1)} />
+                    <Tab label={dayjs(isoArr[2]).format('ddd-D')} {...a11yProps(2)} />
+                    <Tab label={dayjs(isoArr[3]).format('ddd-D')} {...a11yProps(3)} />
+                    <Tab label={dayjs(isoArr[4]).format('ddd-D')} {...a11yProps(4)} />
+                    <Tab label={dayjs(isoArr[5]).format('ddd-D')} {...a11yProps(5)} />
+                    <Tab label={dayjs(isoArr[6]).format('ddd-D')} {...a11yProps(6)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
