@@ -11,6 +11,7 @@ import TimeContainer from '../Event/timeContainer';
 import CSSclasses from '../Event/EventLayout.module.css';
 
 import dayjs, { Dayjs } from 'dayjs';
+import axios from 'axios';
 
 const current = dayjs();
 var isoArr = []
@@ -66,10 +67,21 @@ const ScrollableTabsButtonAuto = (props) => {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
+    const [getEvents, setEvents] = React.useState(0);
+
     const handleChange = (event, newValue) => {
+        console.log("HANDLE CHANGE: ", newValue)
         setValue(newValue);
     };
     console.log(isoArr);
+
+    React.useEffect(() => {
+        console.log("IN THE USE EFFECT: ", isoArr[value]);
+        axios.get('https://gc5o17bgv6.execute-api.ap-southeast-2.amazonaws.com/dev/get-events/all/' + '?ISO_Date=' + isoArr[value])
+            .then(response => {
+                console.log(response);
+            });
+    });
 
     return (
         <div className = { CSSclasses.EventLayoutContainer } >
@@ -93,6 +105,7 @@ const ScrollableTabsButtonAuto = (props) => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
+                {console.log("VALUE: ", value)}
                 <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={1}>
