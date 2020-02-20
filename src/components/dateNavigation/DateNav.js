@@ -95,8 +95,9 @@ const ScrollableTabsButtonAuto = (props) => {
         objectsDic.set(dateKey, dataObjects);
         // console.log("APPEND TO EVENTS VALUES FULL: ",typeof values);
         // console.log("THIS IS JSON PARSE: ", data);
-        console.log(dataObjects);
-        console.log(objectsDic);
+        // console.log(dataObjects);
+        // console.log(objectsDic);
+        console.log(objectsDic.get(dateKey));
         // setEvents(value);
 
     }
