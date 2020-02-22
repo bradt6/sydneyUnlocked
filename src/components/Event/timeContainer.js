@@ -37,6 +37,22 @@ const TimeContainer = (props) => {
             justify="center"
             alignItems="center"
             >
+            {console.log("This is in the time container", props.passedEvent)};
+
+            {/* {Object.keys(props.passedEvent).map(function(item,index) {
+                <Grid className={classes.test} key={item.id}>
+                    <EventContainer
+                        key={props.passedEvent[item].id}
+                        ID={props.passedEvent[item].id}
+                        venueName={props.passedEvent[item].venueName}
+                        eventName={props.passedEvent[item].eventName}
+                        startTime={props.passedEvent[item].startTime}
+                        endTime={props.passedEvent[item].endTime}
+                        date={props.passedEvent[item].date}
+                        ticketLink={props.passedEvent[item].ticketLink}>
+                    </EventContainer>
+                </Grid>
+            })} */}
  
             
             {props.passedEvent.map(item => (
