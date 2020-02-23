@@ -37,7 +37,7 @@ const TimeContainer = (props) => {
             justify="center"
             alignItems="center"
             >
-            {console.log("This is in the time container", props.passedEvent)};
+            
 
             {/* {Object.keys(props.passedEvent).map(function(item,index) {
                 <Grid className={classes.test} key={item.id}>

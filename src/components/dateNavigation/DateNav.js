@@ -66,12 +66,13 @@ const useStyles = makeStyles(theme => ({
 const ScrollableTabsButtonAuto = (props) => {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
-
+    const [isLoading, setIsLoading] = React.useState(true);
     const [getEvents, setEvents] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         console.log("HANDLE CHANGE: ", newValue)
         console.log("EVEnt: ", event)
+        setIsLoading(true);
         setValue(newValue);
     };
     console.log(isoArr);
@@ -103,17 +104,6 @@ const ScrollableTabsButtonAuto = (props) => {
         setEvents(objectsDic);
         
     }
-    
-    // current_event = [
-        //     {
-            //         id: 'YUIDYSAJHJDK21343124',
-            //         eventName: 'Australia party',
-            //         venueName: 'Ivy',
-            //         date: '10/02.20',
-            //         startTime: '2000',
-            //         endTime: '0100',
-            //         ticketLink: 'www.example.com'
-            //     }
             
     React.useEffect(() => {
         console.log("IN THE USE EFFECT: ", isoArr[value]);
@@ -134,7 +124,7 @@ const ScrollableTabsButtonAuto = (props) => {
             }));
             objectsDic.set(isoArr[value], [...dataObjects]);
             setEvents(objectsDic);
-
+            setIsLoading(false);
             // console.log(response.data.body);
             // appendToEvents(response.data.body, isoArr[value])
             // appendToEvents(response, isoArr[value])
@@ -146,9 +136,22 @@ const ScrollableTabsButtonAuto = (props) => {
     console.log("Is there an GETEVENTS",getEvents);
     if (typeof getEvents === 'object') {
         console.log("In the the print get events IF block: ", getEvents.get("2020-02-22"));
+        console.log("In the the print get events IF block: ", getEvents.get(isoArr[0]));
+        console.log("In the the print get events IF block: ", getEvents.get(isoArr[6]));
     }
+    
+    if (isLoading) {
+        return <div>loading ....</div>
+    } 
+    if (typeof getEvents === 'object'){
     return (
         <div className = { CSSclasses.EventLayoutContainer } >
+            <div>
+                <p>{console.log("THIS IS IN THE ELSE RETURN")}</p>
+                <p>{console.log(isoArr[value])}</p>
+                <p>{console.log(getEvents.get(isoArr[value]))}</p>
+                <p>{console.log(isLoading)}</p>
+            </div>
             <AppBar position="static" color="default">
                 <Tabs
                     value={value}
@@ -159,7 +162,7 @@ const ScrollableTabsButtonAuto = (props) => {
                     scrollButtons="auto"
                     aria-label="scrollable auto tabs example"
                 >
-                    <Tab label= {dayjs(isoArr[0]).format('ddd-D')} {...a11yProps(0)} />
+                    <Tab label={dayjs(isoArr[0]).format('ddd-D')} {...a11yProps(0)} />
                     <Tab label={dayjs(isoArr[1]).format('ddd-D')} {...a11yProps(1)} />
                     <Tab label={dayjs(isoArr[2]).format('ddd-D')} {...a11yProps(2)} />
                     <Tab label={dayjs(isoArr[3]).format('ddd-D')} {...a11yProps(3)} />
@@ -168,30 +171,39 @@ const ScrollableTabsButtonAuto = (props) => {
                     <Tab label={dayjs(isoArr[6]).format('ddd-D')} {...a11yProps(6)} />
                 </Tabs>
             </AppBar>
-            <TabPanel value={value} index={0}>
-                {console.log("VALUE: ", value)}
-                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
+            {/* {isLoading && <div></div>} */}
+    <TabPanel value={value} index={0}>
+            {console.log("VALUE: ", value)}
+
+            <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={1}>
-                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={ typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent }></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={2}>
-                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={3}>
-                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={4}>
-                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={5}>
-                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={6}>
-                <TimeContainer passedEvent={props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
       </TabPanel>
         </div>
     );
+    } else {
+        return (
+            <div>
+                <p>Not an object ....</p>
+            </div>
+        )
+    }
 }
 
 export default ScrollableTabsButtonAuto;
