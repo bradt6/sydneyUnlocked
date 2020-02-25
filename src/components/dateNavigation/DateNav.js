@@ -67,7 +67,8 @@ const ScrollableTabsButtonAuto = (props) => {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const [isLoading, setIsLoading] = React.useState(true);
-    const [getEvents, setEvents] = React.useState(0);
+    const [getEvents, setEvents] = React.useState(new Map());
+    var objectsDic = new Map();
 
     const handleChange = (event, newValue) => {
         console.log("HANDLE CHANGE: ", newValue)
@@ -103,14 +104,22 @@ const ScrollableTabsButtonAuto = (props) => {
         
         setEvents(objectsDic);
         
+        
     }
             
     React.useEffect(() => {
+        console.log(getEvents.has(isoArr[value]));
         console.log("IN THE USE EFFECT: ", isoArr[value]);
+        if (getEvents.has(isoArr[value])){
+            console.log("USEEFFECT In the fetch if")
+            setIsLoading(false);
+        } else { 
+            console.log("USEEFFECT IN the fetch else");
+            console.log("CURRENT STATE OF GETEVENTS: ", getEvents);
         axios.get('https://gc5o17bgv6.execute-api.ap-southeast-2.amazonaws.com/dev/get-events/all/' + '?ISO_Date=' + isoArr[value])
         .then(response => {
             console.log(response);
-            let objectsDic = new Map();
+            // let objectsDic = new Map();
             const data = JSON.parse(response.data.body);
             const dataObjects = data.map(event => ({
                 id: event.EventID,
@@ -122,13 +131,18 @@ const ScrollableTabsButtonAuto = (props) => {
                 ticketLink: event.ticketLink,
                 detailed_start: event.detailedStart
             }));
-            objectsDic.set(isoArr[value], [...dataObjects]);
-            setEvents(objectsDic);
+            // objectsDic.set(isoArr[value], [...dataObjects]);
+            // setEvents(objectsDic);
+            setEvents(getEvents.set(isoArr[value], [...dataObjects]));
+            // setEvents(getEvents => getEvents );
+            // setEvents(isoArr[value], [...dataObjects]);
+            console.log("OBJECT DIC IN AXOS AKA GETEVENTS", getEvents);
             setIsLoading(false);
             // console.log(response.data.body);
             // appendToEvents(response.data.body, isoArr[value])
             // appendToEvents(response, isoArr[value])
         });
+    }
     }, [value]);
             
             
