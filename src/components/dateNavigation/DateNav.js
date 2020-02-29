@@ -129,7 +129,8 @@ const ScrollableTabsButtonAuto = (props) => {
                 startTime: event.start_time,
                 endTime: event.end_time,
                 ticketLink: event.ticketLink,
-                detailed_start: event.detailedStart
+                detailed_start: event.detailedStart,
+                description: event.description
             }));
             // objectsDic.set(isoArr[value], [...dataObjects]);
             // setEvents(objectsDic);

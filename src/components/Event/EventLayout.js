@@ -29,7 +29,8 @@ const EventLayout = (props) => {
                 startTime={props.startTime}
                 endTime={props.endTime}
                 date={props.date}
-                ticketLink={props.ticketLink}>
+                ticketLink={props.ticketLink}
+                description={props.description}>
             </ExpandingCard>
         </Aux>
     )

@@ -66,7 +66,8 @@ const TimeContainer = (props) => {
                         startTime={item.startTime}
                         endTime={item.endTime}
                         date={item.date}
-                        ticketLink={item.ticketLink}>
+                        ticketLink={item.ticketLink}
+                        description={item.description}>
                     </EventContainer>
                 </Grid>
             ))}
