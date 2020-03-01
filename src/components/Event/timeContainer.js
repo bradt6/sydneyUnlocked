@@ -28,6 +28,32 @@ const useStyles = makeStyles(theme => ({
 // THIS WILL BE TO GROUP FOR TIME 
 const TimeContainer = (props) => {
     const classes = useStyles();
+    const [getTimeslot, setTimeslot] = React.useState(new Map());
+    const [isLoading, setIsLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        props.passedEvent.map((event, index) => {
+            let startTime = event.startTime;
+            if (!getTimeslot.has(startTime)) {
+                setTimeslot(getTimeslot.set(startTime, [props.passedEvent[index]]));
+                console.log("The current entries IF")
+                console.log(getTimeslot)
+            } else {
+                let currentEntries = getTimeslot.get(startTime);
+                currentEntries.push(props.passedEvent[index]);
+                console.log("The current entries ELSE")
+                console.log(typeof currentEntries)
+                console.log(currentEntries)
+                console.log(getTimeslot)
+                setTimeslot(getTimeslot.set(startTime, currentEntries));
+            }
+        });
+
+        console.log("THIS IS THE TIMESLOT");
+        console.log(getTimeslot);
+    })
+
+
     return(
         // <div className={CSSclasses.EventLayoutContainer}>
     <Aux>
@@ -53,8 +79,7 @@ const TimeContainer = (props) => {
                     </EventContainer>
                 </Grid>
             })} */}
- 
-            
+
             {props.passedEvent.map(item => (
                 <Grid className={classes.test} key={item.id}>
                     <h3>STARTING TIME</h3>

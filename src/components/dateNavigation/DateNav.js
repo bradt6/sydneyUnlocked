@@ -77,35 +77,6 @@ const ScrollableTabsButtonAuto = (props) => {
         setValue(newValue);
     };
     console.log(isoArr);
-
-    const appendToEvents = (values, dateKey) => {
-        // const current= [...getEvents];
-        let objectsDic = new Map();
-        // THIS NEEDS TO SORTED BY detailedStart
-        var data = JSON.parse(values);
-
-        var dataObjects = data.map(event => ({
-            id: event.EventID,
-            eventName: event.event_name[0],
-            venueName: event.venue_name,
-            date: event.Full_date,
-            startTime: event.start_time,
-            endTime: event.end_time,
-            ticketLink: event.ticketLink,
-            detailed_start: event.detailedStart
-        }));
-        objectsDic.set(dateKey, dataObjects);
-        // console.log("APPEND TO EVENTS VALUES FULL: ",typeof values);
-        // console.log("THIS IS JSON PARSE: ", data);
-        // console.log(dataObjects);
-        console.log(typeof objectsDic);
-        console.log(objectsDic.get(dateKey));
-        console.log(typeof objectsDic.get(dateKey));
-        
-        setEvents(objectsDic);
-        
-        
-    }
             
     React.useEffect(() => {
         console.log(getEvents.has(isoArr[value]));
