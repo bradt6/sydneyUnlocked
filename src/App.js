@@ -6,10 +6,6 @@ import EventLoader from './containers/EventLoadout';
 
 
 function App() {
-  const [getEventState, setEventState] = useState({
-
-  });
-
   return (
       <Layout>
       <div className={classes.App}>

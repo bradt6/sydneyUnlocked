@@ -10,36 +10,13 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
+import { grey } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CSSClasses from './ExpandingCard.module.css';
 import Button from '@material-ui/core/Button';
-
-// Example data being passed in via props 
-
-// current_event = [
-//     {
-//         id: 'YUIDYSAJHJDK21343124',
-//         venueName: 'Australia party',
-//         eventName: 'Ivy',
-//         date: '10/02.20',
-//         startTime: '2000',
-//         endTime: '0100',
-//         ticketLink: 'www.example.com'
-//     },
-//     {
-//         id: 'HKFHDSJKFHJKSDHFJ',
-//         venueName: 'WOOOOOO',
-//         eventName: 'Zepher',
-//         date: '10/02.20',
-//         startTime: '2000',
-//         endTime: '0100',
-//         ticketLink: 'www.Zepher.com'
-//     },
-// ];
 
 function createMarkupOutside(textToRender) {
     return {
@@ -52,7 +29,8 @@ const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345,
         margin: 10,
-        width:325
+        width:325,
+        backgroundColor: grey[300],
     },
     media: {
         height: 0,
@@ -67,9 +45,6 @@ const useStyles = makeStyles(theme => ({
     },
     expandOpen: {
         transform: 'rotate(180deg)',
-    },
-    avatar: {
-        backgroundColor: red[500],
     },
 }));
 
@@ -109,12 +84,13 @@ const ExpandingCard = (props) => {
 
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
+            {/* THIS SHOULD BE ADDED WHEN A USER HAS THE ABILITY TO LIKE THINGS */}
+                {/* <IconButton aria-label="add to favorites">
                     <FavoriteIcon />
                 </IconButton>
                 <IconButton aria-label="share">
                     <ShareIcon />
-                </IconButton>
+                </IconButton> */}
                 <IconButton
                     className={clsx(classes.expand, {
                         [classes.expandOpen]: expanded,
@@ -130,8 +106,6 @@ const ExpandingCard = (props) => {
                 <CardContent>
                     <Typography paragraph>
                          <div dangerouslySetInnerHTML={createMarkupOutside(props.description)} />
-                        {/* <div dangerouslySetInnerHTML={createMarkup(props.description)} />; */}
-                        {/* {props.description} */}
                      </Typography>
                     <div className={CSSClasses.buttonContainer}>
                         {/* TODO: PASS THE ticketLink */}

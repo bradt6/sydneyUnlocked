@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import EventContainer from './EventLayout';
-import { red } from '@material-ui/core/colors'
+import { grey } from '@material-ui/core/colors'
 
 import CSSclasses from './EventLayout.module.css';
 import Aux from '../../hoc/Aux';
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
         zIndex: 10,
     },
     test: {
-        backgroundColor: red[500],
+        backgroundColor: grey[500],
         padding:10,
         margin: 10,
     }

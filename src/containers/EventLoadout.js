@@ -5,17 +5,6 @@ import EventContainer from '../components/Event/EventLayout';
 import TimeContainer from '../components/Event/timeContainer';
 import ScrollableTabs from '../components/dateNavigation/DateNav';
 
-import dayjs, {Dayjs} from 'dayjs';
-
-// const current = dayjs();
-// var isoArr = []
-// const populateDays = () => {
-//     for (var i = 0; i < 7; i++) {
-//         const dayToAdd = current.add(i, 'day').format('YYYY-MM-DD');
-//         isoArr.push(dayToAdd);
-//     }
-// }
-
 class EventLoadout extends Component {
     // use this to maintain dictionary of visited values of days
     state = {

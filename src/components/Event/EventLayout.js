@@ -10,18 +10,6 @@ import Aux from '../../hoc/Aux';
 const EventLayout = (props) => {
     return (
         <Aux>
-            {/* {transformedEvents} */}
-            {/* {props.passedEvent.map(item => (
-                <ExpandingCard key={item.id}
-                ID={item.id}
-                venueName={item.venueName} 
-                eventName={item.eventName} 
-                startTime={item.startTime}
-                endTime={item.endTime}
-                date={item.date}
-                ticketLink={item.ticketLink}
-                ></ExpandingCard>
-            ))} */}
             <ExpandingCard key={props.id}
                 ID={props.id}
                 venueName={props.venueName}

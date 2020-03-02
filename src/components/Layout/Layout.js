@@ -8,7 +8,8 @@ const layout = (props) => (
     <Aux>
         <main className={classes.Container}>
             <div className={classes.Wrapper}>
-                <NavBar></NavBar>
+                {/* CURRENTLY DISABLED THE NAVBAR FOR MVP */}
+                {/* <NavBar></NavBar> */}
                 {props.children}
             </div>
         </main>
