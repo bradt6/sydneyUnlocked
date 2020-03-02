@@ -30,32 +30,35 @@ const TimeContainer = (props) => {
     const classes = useStyles();
     const [getTimeslot, setTimeslot] = React.useState(new Map());
     const [isLoading, setIsLoading] = React.useState(true);
+    var orderedKeys = []
+    var orderSet = new Set()
 
     React.useEffect(() => {
         props.passedEvent.map((event, index) => {
+            console.log("Event Name: ", event.eventName)
             let startTime = event.startTime;
             if (!getTimeslot.has(startTime)) {
                 setTimeslot(getTimeslot.set(startTime, [props.passedEvent[index]]));
                 console.log("The current entries IF")
-                console.log(getTimeslot)
             } else {
                 let currentEntries = getTimeslot.get(startTime);
                 currentEntries.push(props.passedEvent[index]);
                 console.log("The current entries ELSE")
-                console.log(typeof currentEntries)
-                console.log(currentEntries)
-                console.log(getTimeslot)
                 setTimeslot(getTimeslot.set(startTime, currentEntries));
-            }
-        });
-
-        console.log("THIS IS THE TIMESLOT");
-        console.log(getTimeslot);
+            }  
+        })
+        setIsLoading(false);
     })
 
+    if (!isLoading){
+        for (let key of getTimeslot.keys()) {
+            orderedKeys.push(key);
+        } 
+        orderedKeys.sort()
+        orderSet = (new Set(orderedKeys));
+    }
 
     return(
-        // <div className={CSSclasses.EventLayoutContainer}>
     <Aux>
         <Grid
             container
@@ -63,24 +66,30 @@ const TimeContainer = (props) => {
             justify="center"
             alignItems="center"
             >
-            
 
-            {/* {Object.keys(props.passedEvent).map(function(item,index) {
-                <Grid className={classes.test} key={item.id}>
-                    <EventContainer
-                        key={props.passedEvent[item].id}
-                        ID={props.passedEvent[item].id}
-                        venueName={props.passedEvent[item].venueName}
-                        eventName={props.passedEvent[item].eventName}
-                        startTime={props.passedEvent[item].startTime}
-                        endTime={props.passedEvent[item].endTime}
-                        date={props.passedEvent[item].date}
-                        ticketLink={props.passedEvent[item].ticketLink}>
-                    </EventContainer>
+                {[...orderSet].map(key => (
+                <Grid className = {classes.test} key = {key}>
+                    <h3>{key}</h3>
+                    {console.log("HERE", key)}
+                    {console.log("HERE", orderSet)}
+                    {getTimeslot.get(key).map(value => (
+                        <EventContainer
+                            key={value.id}
+                            ID={value.id}
+                            venueName={value.venueName}
+                            eventName={value.eventName}
+                            startTime={value.startTime}
+                            endTime={value.endTime}
+                            date={value.date}
+                            ticketLink={value.ticketLink}
+                            description={value.description}>
+                        </EventContainer>
+                    ))}
                 </Grid>
-            })} */}
+            ))}
+            </Grid>
 
-            {props.passedEvent.map(item => (
+            {/* {props.passedEvent.map(item => (
                 <Grid className={classes.test} key={item.id}>
                     <h3>STARTING TIME</h3>
                     <EventContainer
@@ -96,11 +105,10 @@ const TimeContainer = (props) => {
                     </EventContainer>
                 </Grid>
             ))}
-        </Grid>
+        </Grid> */}
     </Aux>
-    // </div>
     );
-
+    
 }
 
 export default TimeContainer;

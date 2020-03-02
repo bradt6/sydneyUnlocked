@@ -161,25 +161,25 @@ const ScrollableTabsButtonAuto = (props) => {
     <TabPanel value={value} index={0}>
             {console.log("VALUE: ", value)}
 
-            <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
+            <TimeContainer passedEvent={getEvents.get(isoArr[value])}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={1}>
-                <TimeContainer passedEvent={ typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent }></TimeContainer>
+                <TimeContainer passedEvent={ getEvents.get(isoArr[value]) }></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={2}>
-                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={getEvents.get(isoArr[value])}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={3}>
-                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={getEvents.get(isoArr[value])}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={4}>
-                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={getEvents.get(isoArr[value])}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={5}>
-                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={getEvents.get(isoArr[value])}></TimeContainer>
       </TabPanel>
             <TabPanel value={value} index={6}>
-                <TimeContainer passedEvent={typeof getEvents === 'object' ? getEvents.get(isoArr[value]) : props.passedEvent}></TimeContainer>
+                <TimeContainer passedEvent={getEvents.get(isoArr[value])}></TimeContainer>
       </TabPanel>
         </div>
     );
